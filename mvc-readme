@@ -1,0 +1,42 @@
+download start.spring.io with web dependency
+static web pages should be uploaded in war format
+so change packing type in pom file
+
+<packaging>war</packaging>
+Add dependency of tomacat
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-tomcat</artifactId>
+    <scope>provided</scope>
+</dependency>
+
+static pages in war are server fro src/main/webapp
+create webapp folder in src/main/
+traditional jsp pages are server from src/main/webapp/WEB-INF
+create new folder jsp inside WEB-INF
+
+extend main class  ConferenceApplication extends SpringBootServletInitializer
+
+change application properties
+    spring.mvc.view.prefix=/WEB-INF/jsp/
+    spring.mvc.view.suffix=.jsp
+    This can be done manually by impelenting WebMvcConfigurer and creating custom view resolver for more details see ConferenceConfig.java class
+    
+
+Internationalization(I18N):
+    grabing them from resource bundle this can be done by using interceptors
+    
+Interceptors:
+Intercept call to servers and perform special task on call.
+common example : logging, security, I18N, performance monitoring
+check I18N example for more details
+
+Post redirect get pattern
+Techinque used to eliminate form resubmisssion. It will reset all the states
+prepend redirect: in template return. It will stop resubmit message after post
+
+Thymeleaf:
+light weight html5 frame work used by spring communtiy
+for configuring thymeleaf changes are in config file.
+create new template engine and view resolver with details of html and changes in controller
